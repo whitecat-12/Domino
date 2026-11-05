@@ -594,7 +594,7 @@ function openSetup(o){
 
 const _sm2=showMenu;
 showMenu=function(){$('overlay').classList.remove('tall');_sm2();
-  const b=document.createElement('button');b.className='ghostbtn';b.id='btn-setup';b.textContent='🃏 Susun Kartu Sendiri';
+  const b=document.createElement('button');b.className='ghostbtn';b.id='btn-setup';b.textContent='Susun Kartu Sendiri';
   const ref=$('btn-set')||$('panel').querySelector('.hint');$('panel').insertBefore(b,ref);
   b.onclick=()=>openSetup({n:selP,ai:Array.from({length:selP},(_,i)=>selM==='ai'&&i>0),keep:false})};
 const _er2=endRound;
@@ -632,7 +632,7 @@ document.head.appendChild(css);
 
 /* ---------- tombol Undo & Simpan di bawah ---------- */
 const ctl=document.createElement('div');ctl.id='ctl';
-ctl.innerHTML='<button id="undo">↶ Undo</button><button id="savebtn">💾 Simpan Replay</button>';
+ctl.innerHTML='<button id="undo">↶ Undo</button><button id="savebtn">Simpan Replay</button>';
 $('bottom').insertBefore(ctl,$('hand'));
 
 /* ---------- rekam & snapshot ---------- */
@@ -680,7 +680,7 @@ function openLib(){const ov=$('overlay');ov.classList.remove('peek');ov.classLis
   $('topbar').style.opacity=$('bottom').style.opacity=0;const a=lib().filter(r=>valid(r.data));
   $('panel').innerHTML=`<h1 style="font-size:20px">REPLAY TERSIMPAN</h1><p class="sub" style="margin-bottom:8px">Putar, hentikan di langkah mana saja, lalu evaluasi.</p>
   ${a.length?a.map(r=>`<div class="rl"><div class="t">${esc(r.name)}<small>${r.data.events.length} langkah${r.data.result?' · '+esc(r.data.result.winner)+' menang':''}</small></div><button data-a="p" data-i="${r.id}">▶</button><button data-a="d" data-i="${r.id}">⬇</button><button data-a="x" data-i="${r.id}">🗑</button></div>`).join(''):'<p class="sub">Belum ada replay tersimpan.</p>'}
-  <label class="ghostbtn" style="display:block;text-align:center">📂 Buka File Replay<input type="file" id="rp-file" accept=".json,application/json" hidden></label>
+  <label class="ghostbtn" style="display:block;text-align:center">Buka File Replay<input type="file" id="rp-file" accept=".json,application/json" hidden></label>
   <button class="ghostbtn" id="rl-back">Kembali</button>`;
   $('panel').querySelectorAll('.rl button').forEach(b=>b.onclick=()=>{const it=a.find(r=>String(r.id)===b.dataset.i);if(!it)return;
     if(b.dataset.a==='p')startReplay(it.data);else if(b.dataset.a==='d')dl(it);else{setLib(lib().filter(r=>r.id!==it.id));openLib()}});
@@ -781,7 +781,7 @@ endRound=function(w){_er3(w);if(!rec||!rec.events.length)return;
   if(w2<0){let b=1e9;S.players.forEach((p,i)=>{const s=pipSum(p.hand);if(s<b){b=s;w2=i}})}
   rec.result={winner:S.players[w2].name,blocked:wi<0};
   const row=document.createElement('div');row.className='row2';
-  row.innerHTML='<button class="ghostbtn" id="er-save">💾 Simpan Replay</button><button class="ghostbtn" id="er-watch">📼 Tonton</button>';
+  row.innerHTML='<button class="ghostbtn" id="er-save">Simpan Replay</button><button class="ghostbtn" id="er-watch">📼 Tonton</button>';
   $('panel').appendChild(row);
   $('er-save').onclick=()=>{if(saveRec())$('er-save').textContent='✓ Tersimpan'};
   $('er-watch').onclick=()=>startReplay(JSON.parse(JSON.stringify(rec)))};
